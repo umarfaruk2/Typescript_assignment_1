@@ -51,7 +51,12 @@ const books = [
 ];
 
 
-const filterByRating = books.reduct((book, currentBook) 
+const filterByRating = books.reduce((book, currentBook): object => {
+  if(currentBook.rating >= 4) {
+    book.push(currentBook);
+  }
+  return book;
+}, []);
 
 
 
