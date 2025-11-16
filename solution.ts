@@ -44,23 +44,22 @@ class Person {
 
 //-------------------------
 
-const books = [
-  { title: 'Book A', rating: 4.5 },
-  { title: 'Book B', rating: 3.2 },
-  { title: 'Book C', rating: 5.0 },
-];
+
+type BookType = {title: string, rating: number};
+const filterByRating = (inputBook: BookType[]): BookType[] => {
+
+  const filterArray: BookType[] = [];
+
+  inputBook.forEach((book) => {
+    if(book.rating >= 4) {
+      filterArray.push({title: book.title, rating: book.rating.toFixed(1)});
+    }
+  })
+  return filterArray; 
+}
 
 
-const filterByRating = books.reduce((book, currentBook): object => {
-  if(currentBook.rating >= 4) {
-    book.push(currentBook);
-  }
-  return book;
-}, []);
-
-
-
-
+//------------------------
 
 
 
