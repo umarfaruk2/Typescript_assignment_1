@@ -45,7 +45,11 @@ class Person {
 //-------------------------
 
 
-type BookType = {title: string, rating: number};
+type BookType = {
+  title: string;
+  rating: number;
+};
+
 const filterByRating = (inputBook: BookType[]): BookType[] => {
 
   const filterArray: BookType[] = [];
@@ -55,16 +59,34 @@ const filterByRating = (inputBook: BookType[]): BookType[] => {
       filterArray.push({title: book.title, rating: book.rating.toFixed(1)});
     }
   })
-  return filterArray; 
+  return filterArray;
 }
 
 
 //------------------------
 
+type UserType = {
+  id: number;
+  name: string;
+  email: string;
+  isActive: boolean;
+};
 
 
+const filterActiveUsers = (userInfo: UserType[]): UserType[] => {
+
+  const filterArray: UserType[] = [];
+
+  userInfo.forEach((user) => {
+    if(user.isActive == true) {
+      filterArray.push(user);
+    }
+  })
+  return filterArray;
+}
 
 
+//-------------------------
 
 
 
