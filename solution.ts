@@ -110,12 +110,13 @@ const getUniqueValues = <T>(array1: Array<T>, array2: Array<T>): Array<T> => {
       }
     }
     if(find) {
-      uniqueArray.push(array2[i]);
+      uniqueArray[uniqueArray.length] = array2[i];
     }
   }
 
   return uniqueArray;
 }
+
 
 
 interface IProduct  {
