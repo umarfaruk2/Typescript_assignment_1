@@ -101,14 +101,62 @@ const printBookDetails = (book: Book): void => {
 
 
 
-
-
 //-------------------
 
 
+const getUniqueValues = <T>(array1: Array<T>, array2: Array<T>): Array<T> => {
+  const uniqueArray: Array<T> = [...array1];
+
+  for(let i = 0; i < array1.length; i++) {
+    let find = true;
+    for(let j = 0; j < array2.length; j++) {
+     if(array2[i] === uniqueArray[j]) {
+        find = false;
+        break;
+      }
+    }
+    if(find) {
+      uniqueArray.push(array2[i]);
+    }
+  }
+
+  return uniqueArray;
+}
 
 
 
+//----------------------
+
+interface IProduct  {
+  name: string;
+  price: number;
+  quantity: number;
+  discount?: number;
+}
+
+
+const calculateTotalPrice = (products: IProduct[]): number => {
+  const totalCalculatePrice = products.reduce((totalPrice, currentItem) => {
+
+    if(currentItem.discount) {
+      const itemPrice = currentItem.price * currentItem.quantity;
+      return totalPrice += itemPrice - ((currentItem.discount / 100) * itemPrice);
+    } else {
+      const itemPrice = currentItem.price * currentItem.quantity;
+      return totalPrice += itemPrice;
+    }
+  }, 0);
+
+  return totalCalculatePrice;
+}
+
+const products = [
+  { name: 'Pen', price: 10, quantity: 2 },
+  { name: 'Notebook', price: 25, quantity: 3, discount: 10 },
+  { name: 'Bag', price: 50, quantity: 1, discount: 20 },
+];
+
+console.log(calculateTotalPrice(products));
 
 
 
