@@ -15,7 +15,6 @@ const formatValue = (input: charType): charType => {
   }
 };
 
-//---------------------
 
 const getLength = <T>(input: string | Array<T>): number => {
   if(typeof input == 'object') {
@@ -25,7 +24,6 @@ const getLength = <T>(input: string | Array<T>): number => {
   return input.length;
 }
 
-//-------------------------
 
 
 class Person {
@@ -41,8 +39,6 @@ class Person {
     return `'Name: ${this.name}, Age: ${this.age}'`;
   }
 }
-
-//-------------------------
 
 
 type BookType = {
@@ -62,8 +58,6 @@ const filterByRating = (inputBook: BookType[]): BookType[] => {
   return filterArray;
 }
 
-
-//------------------------
 
 type UserType = {
   id: number;
@@ -86,8 +80,6 @@ const filterActiveUsers = (userInfo: UserType[]): UserType[] => {
 }
 
 
-//-------------------------
-
 interface Book {
   title: string;
   author: string;
@@ -101,11 +93,13 @@ const printBookDetails = (book: Book): void => {
 
 
 
-//-------------------
-
 
 const getUniqueValues = <T>(array1: Array<T>, array2: Array<T>): Array<T> => {
-  const uniqueArray: Array<T> = [...array1];
+  const uniqueArray: Array<T> = new Array(array1.length);
+
+  for(let i = 0; i < array1.length; i++) {
+      uniqueArray[i] = array1[i];
+  }
 
   for(let i = 0; i < array1.length; i++) {
     let find = true;
@@ -123,9 +117,6 @@ const getUniqueValues = <T>(array1: Array<T>, array2: Array<T>): Array<T> => {
   return uniqueArray;
 }
 
-
-
-//----------------------
 
 interface IProduct  {
   name: string;
@@ -149,30 +140,6 @@ const calculateTotalPrice = (products: IProduct[]): number => {
 
   return totalCalculatePrice;
 }
-
-
-//------------
-
-type StudentInfoType = {
-  id: number;
-  name: string;
-}
-
-type StudentSchoolInfoType = {
-  schoolID: number;
-  schooolNmae: string;
-};
-
-type StudentType = StudentInfoType & StudentSchoolInfoType;
-
-const checkStudentInfo = (input: StudentType): void => {
-    console.log(`My name is ${input.name}, and my school name is ${input.schooolNmae}`);
-}
-
-
-checkStudentInfo({id: 1, name: 'ak khan', schoolID: 1, schooolNmae: 'new school'});
-
-
 
 
 
