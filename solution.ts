@@ -150,17 +150,27 @@ const calculateTotalPrice = (products: IProduct[]): number => {
   return totalCalculatePrice;
 }
 
-const products = [
-  { name: 'Pen', price: 10, quantity: 2 },
-  { name: 'Notebook', price: 25, quantity: 3, discount: 10 },
-  { name: 'Bag', price: 50, quantity: 1, discount: 20 },
-];
 
-console.log(calculateTotalPrice(products));
+//------------
+
+type StudentInfoType = {
+  id: number;
+  name: string;
+}
+
+type StudentSchoolInfoType = {
+  schoolID: number;
+  schooolNmae: string;
+};
+
+type StudentType = StudentInfoType & StudentSchoolInfoType;
+
+const checkStudentInfo = (input: StudentType): void => {
+    console.log(`My name is ${input.name}, and my school name is ${input.schooolNmae}`);
+}
 
 
-
-
+checkStudentInfo({id: 1, name: 'ak khan', schoolID: 1, schooolNmae: 'new school'});
 
 
 
